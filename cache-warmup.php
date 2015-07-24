@@ -31,6 +31,8 @@ $storageDir = sprintf('%s%sstorage%s',       $rootDir,    DIRECTORY_SEPARATOR, D
 $configDir  = sprintf('%s%sconfiguration%s', $storageDir, DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR);
 $cachePath  = sprintf('%s/storage/cache/images', $publicURL);
 
+
+/**
 $databaseConfigFile = sprintf('%sdatabase.php', $configDir);
 
 if (!file_exists($databaseConfigFile)) {
@@ -40,7 +42,18 @@ if (!file_exists($databaseConfigFile)) {
 }
 
 require($databaseConfigFile);
-
+ */
+ 
+$KOKEN_DATABASE = Array(
+      'driver' => 'mysqli',
+      'hostname' => 'localhost',
+      'database' => 'Koken',
+      'username' => 'your_database_account',
+      'password' => 'your_database_password',
+      'prefix' => 'koken_',
+      'socket' => ''
+   ); 
+ 
 try {
     $pdo = new PDO(sprintf('mysql:dbname=%s;host=%s', $KOKEN_DATABASE['database'], $KOKEN_DATABASE['hostname']), $KOKEN_DATABASE['username'], $KOKEN_DATABASE['password']);
 } catch (PDOException $e) {
